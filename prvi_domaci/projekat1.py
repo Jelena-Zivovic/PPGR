@@ -99,7 +99,6 @@ def DLT(originali, slike):
 
     #SVD dekompozicija matrice, dobijaju se 3 matrice: U, D i V
     U, D, V = np.linalg.svd(A)
- 
     #matrica preslikavanja je poslednja vrsta matrice V
     P = V[-1].reshape(3, 3)
  
@@ -121,7 +120,7 @@ def normalize(tacke):
     y = y / float(len(tacke))
 
     for i in range(len(tacke)):
-        #svaka 
+       
         tmp1 = tacke[i][0]/tacke[i][2] - x
         tmp2 = tacke[i][1]/tacke[i][2] - y
 
@@ -453,7 +452,7 @@ def prikaziModifikovaniDLT():
 
 
 def ucitaj():
-    #odabir slike
+    #biranje slike
     filename = filedialog.askopenfilename()
 
     global image 
@@ -478,8 +477,7 @@ def ucitaj():
         e = Entry(frame4)
         tackeE.append(e)
         tackeE[i].grid(row=i+2)
-
-    
+ 
     def ispraviSliku():
         tacke = []
 
@@ -492,19 +490,19 @@ def ucitaj():
 
         #izracunavanje koordinata pravougaonika u cija temena treba da se preslikaju odabrane tacke na slici
         slike = []
-
         
         #p1 i p2 su pomocne promenljive koje predstavljaju duzinu ili sirinu odabranog cetvorougla
-        #tj. trougla koji definisu 4 odabrane tacke na slici
+        #tj. cetvorougla koji definisu 4 odabrane tacke na slici
         p1 = math.sqrt((tacke[0][0]-tacke[3][0])**2 + (tacke[0][1]-tacke[3][1])**2)
         p2 = math.sqrt((tacke[1][0] - tacke[2][0])**2 + (tacke[1][1] - tacke[2][1])**2)
 
-        #sirina pravougaonika je aritmeticka sredina sirina originalnog cetvorougla
+        #sirina pravougaonika je aritmeticka sredina sirina stranica originalnog cetvorougla
         sirina = round((p1+p2)/2)
 
         p1 = math.sqrt((tacke[0][0]-tacke[1][0])**2 + (tacke[0][1]+tacke[1][1])**2)
         p2 = math.sqrt((tacke[3][0]-tacke[2][0])**2 + (tacke[3][1] - tacke[2][1])**2)
 
+        #duzina pravougaonika je aritmeticka sredina duzina stranica originalnog cetvorougla
         duzina = round((p1+p2)/2)
 
         s1 = dimensions[1] - sirina
@@ -534,7 +532,7 @@ def ucitaj():
         #prolazenje kroz sve piksele 
         for i in range(dimensions[0]):
             for j in range(dimensions[1]):
-                #na svaki piksel (i, j) se racuna piksel koji se sa originalne slike preslikava u njega
+                #za svaki piksel (i, j) se racuna piksel koji se sa originalne slike preslikava u njega
                 x_coor, y_coor, z_coor = np.dot(P_inv, [i, j, 1])
 
                 x = round(x_coor/z_coor)
