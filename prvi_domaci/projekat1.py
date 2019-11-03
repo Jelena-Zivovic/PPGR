@@ -421,8 +421,8 @@ def prikaziModifikovaniDLT():
             Pndlt = dlt_normalize(originali, slike)
             PndltPreslikano = dlt_normalize(novi_originali, nove_slike)
             
-            PndltKonacka = np.dot(np.linalg.inv(C2), PndltPreslikano)
-            PndltKonacka = np.dot(PndltKonacka, C1)
+            PndltKonacna = np.dot(np.linalg.inv(C2), PndltPreslikano)
+            PndltKonacna = np.dot(PndltKonacna, C1)
 
             labelIspis3 = Label(frame3, text="Prva")
             labelIspis3.grid(row=brojTacaka+11, column=0)
@@ -433,7 +433,7 @@ def prikaziModifikovaniDLT():
             labelIspis4 = Label(frame3, text="Druga:")
             labelIspis4.grid(row=brojTacaka+11, column=1)
 
-            labelMat4 = Label(frame3, text=str(PndltKonacka))
+            labelMat4 = Label(frame3, text=str(PndltKonacna))
             labelMat4.grid(row=brojTacaka+12, column=1)
 
             
