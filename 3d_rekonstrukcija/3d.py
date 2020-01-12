@@ -29,11 +29,11 @@ def init():
         np.array([771, 617, 1]), #x15
         np.array([317, 669, 1]), #x16 
         np.array([94, 631, 1]), #x17
-        np.array([0, 0, 1]), #x18 nevijliava
+        np.array([0, 0, 1]), #x18 nevidljiva
         np.array([927, 603, 1]), #x19
         np.array([703, 783, 1]), #x20
         np.array([96, 826, 1]), #x21
-        np.array([0, 0, 1]), #x22 neviljiva
+        np.array([0, 0, 1]), #x22 nevidljiva
         np.array([921, 788, 1]), #x23
         np.array([698, 991, 1]), #x24
     ]
@@ -52,16 +52,16 @@ def init():
         np.array([237, 376, 1]), #y10 
         np.array([690, 403, 1]), #y11
         np.array([717, 335, 1]), #y12
-        np.array([0, 0, 1]), #y13 nevidljova
+        np.array([0, 0, 1]), #y13 nevidljiva
         np.array([719, 555, 1]), #y14 
         np.array([688, 639, 1]), #y15
         np.array([251, 617, 1]), #y16 
         np.array([127, 550, 1]), #y17
-        np.array([0, 0, 1]), #y18 nevijliava
+        np.array([0, 0, 1]), #y18 nevidljiva
         np.array([863, 654, 1]), #y19
         np.array([463, 783, 1]), #y20
         np.array([133, 721, 1]), #y21
-        np.array([0, 0, 1]), #y22 neviljiva
+        np.array([0, 0, 1]), #y22 nevidljiva
         np.array([858, 838, 1]), #y23
         np.array([466, 975, 1]), #y24
     ]
