@@ -256,8 +256,8 @@ def main():
     for i in range(number_of_dots):
         rekonstruisane400[i] = dig.dot(rekonstruisane[i])
         print(rekonstruisane400[i])
-        
-    #print(rekonstruisane)
+    '''    
+    print(rekonstruisane)
     X = rekonstruisane400
     
     fig = plt.figure()
@@ -268,7 +268,7 @@ def main():
     ax.scatter(X[12:16, 0], X[12:16, 1], X[12:16, 2], color="red")
     plt.gca().invert_yaxis()
     plt.show()
-
+    '''
     
     #image = PIL.Image.open("desnaNew.jpg")
     #image.show()
