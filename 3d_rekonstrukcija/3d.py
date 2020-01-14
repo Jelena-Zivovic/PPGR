@@ -114,30 +114,28 @@ def init():
      
     return x, y
 
-def fundamental_matrix(x, y):
-    jed8 = np.zeros((8, 9))
+def jed(x1, y1):
+    a1 = x1[0]
+    b1 = y1[0]
     
-    for i in range(4):
-        jed8[i] = [x[i][0] * y[i][0],
-                   x[i][1] * y[i][0],
-                   x[i][2] * y[i][0],
-                   x[i][0] * y[i][1],
-                   x[i][1] * y[i][1],
-                   x[i][2] * y[i][1],
-                   x[i][0] * y[i][2],
-                   x[i][1] * y[i][2],
-                   x[i][2] * y[i][2]]
-    for i in range(8,12):
-        jed8[i-4] = [x[i][0] * y[i][0],
-                   x[i][1] * y[i][0],
-                   x[i][2] * y[i][0],
-                   x[i][0] * y[i][1],
-                   x[i][1] * y[i][1],
-                   x[i][2] * y[i][1],
-                   x[i][0] * y[i][2],
-                   x[i][1] * y[i][2],
-                   x[i][2] * y[i][2]]
-        
+    a2 = x1[1]
+    b2 = y1[1]
+    
+    a3 = x1[2]
+    b3 = y1[2]
+    
+    return np.array([a1*b1, a2*b1, a3*b1, a1*b2, a2*b2, a3*b2, a1*b3, a2*b3, a3*b3])
+
+def fundamental_matrix(x, y):
+    jed8 = []
+    xx = np.array([x[0], x[1], x[2], x[3], x[6], x[7], x[8], x[10]])
+    yy = np.array([y[0], y[1], y[2], y[3], y[6], y[7], y[8], y[10]])
+    
+    for i in range(8):
+        tmp = jed(xx[i], yy[i])
+        jed8.append(tmp)
+    
+ 
     U, D, V = np.linalg.svd(jed8)
     last = V[:][-1]
     f = np.reshape(last, (3, 3))
@@ -256,19 +254,19 @@ def main():
     for i in range(number_of_dots):
         rekonstruisane400[i] = dig.dot(rekonstruisane[i])
         print(rekonstruisane400[i])
-    '''    
-    print(rekonstruisane)
+        
     X = rekonstruisane400
     
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
     ax.scatter(X[:4, 0], X[:4, 1], X[:4, 2], color="blue")
     ax.scatter(X[4:8, 0], X[4:8, 1], X[4:8, 2], color="blue")
-    ax.scatter(X[8:12, 0], X[8:12, 1], X[8:12, 2], color="red")
-    ax.scatter(X[12:16, 0], X[12:16, 1], X[12:16, 2], color="red")
+    ax.scatter(X[8:12, 0], X[8:12, 1], X[8:12, 2], color="blue")
+    ax.scatter(X[12:, 0], X[12:, 1], X[12:, 2], color="blue")
+    
     plt.gca().invert_yaxis()
     plt.show()
-    '''
+    
     
     #image = PIL.Image.open("desnaNew.jpg")
     #image.show()
